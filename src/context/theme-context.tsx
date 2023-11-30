@@ -1,7 +1,13 @@
-import React from 'react'
+'use client';
 
-export const ThemeContext = () => {
+import { ThemeProvider as Provider } from 'next-themes';
+
+const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div></div>
-  )
-}
+    <Provider enableSystem={false} attribute='class'>
+        {children}
+    </Provider>
+  );
+};
+
+export default ThemeProvider;

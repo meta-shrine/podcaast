@@ -1,9 +1,10 @@
-import Image from 'next/image'
+import { Main } from '@/components/pages/main';
+import Image from 'next/image';
 
 export default function Home() {
   return (
-    <main className='flex h-full flex-col items-center justify-between p-24'>
-      Hellos
+    <main className='h-full w-full p-4'>
+      <Main />
     </main>
   );
 }
