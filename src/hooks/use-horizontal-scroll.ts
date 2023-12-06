@@ -1,35 +1,41 @@
 import { useRef, useEffect } from "react";
 
-export function useHorizontalScroll() {
-  const elRef = useRef<HTMLDivElement | null>(null);
+export function useHorizontalScroll<T extends HTMLDivElement>() {
+  const elRef = useRef<T>(null);
 
   useEffect(() => {
     const el = elRef.current;
 
-    if (el) {
-      const onWheel = (e: WheelEvent) => {
-        if (e.deltaY === 0 && e.deltaX === 0) return;
+    const onMouseDown = (e: MouseEvent) => {
+      let isDragging = true;
+      let startX: number;
+      let scrollLeft: number;
 
-        e.preventDefault();
+      startX = e.clientX;
+      scrollLeft = el?.scrollLeft || 0;
 
-        // Increase the scroll speed for better responsiveness
-        const scrollSpeed = 5;
-        
-        if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-          // Adjust vertical scroll speed
-          el.scrollTop += e.deltaY * scrollSpeed;
-        } else {
-          // Adjust horizontal scroll speed
-          el.scrollLeft += e.deltaX * scrollSpeed;
-        }
+      const onMouseMove = (e: MouseEvent) => {
+        if (!isDragging) return;
+        const x = e.clientX;
+        const walk = (x - startX) * 0.8;
+        el && (el.scrollLeft = scrollLeft - walk);
       };
 
-      el.addEventListener("wheel", onWheel);
-
-      return () => {
-        el.removeEventListener("wheel", onWheel);
+      const onMouseUp = () => {
+        isDragging = false;
+        window.removeEventListener("mousemove", onMouseMove);
+        window.removeEventListener("mouseup", onMouseUp);
       };
-    }
+
+      window.addEventListener("mousemove", onMouseMove);
+      window.addEventListener("mouseup", onMouseUp);
+    };
+
+    el?.addEventListener("mousedown", onMouseDown);
+
+    return () => {
+      el?.removeEventListener("mousedown", onMouseDown);
+    };
   }, []);
 
   return elRef;

@@ -3,7 +3,7 @@ import { FaPlay } from 'react-icons/fa';
 
 export const Explore = () => {
   return (
-    <div className='h-full w-full rounded-xl bg-[url(https://images.pexels.com/photos/6953780/pexels-photo-6953780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)] bg-cover'>
+    <div className='h-full rounded-xl bg-[url(https://images.pexels.com/photos/6953780/pexels-photo-6953780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)] bg-cover'>
       <div className='h-full w-full flex items-end p-4 bg-gradient-to-b from-transparent to-neutral-950'>
         <div className='py-6'>
           <div className=' text-neutral-400 z-10'>

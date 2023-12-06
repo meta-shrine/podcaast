@@ -5,7 +5,7 @@ import { LuBell, LuSettings } from 'react-icons/lu';
 
 export const Navbar = () => {
   return (
-    <div className='h-16 w-full px-6 sticky top-0 left-0'>
+    <div className='h-16 w-full px-6'>
       <div className='flex justify-between items-center h-full w-full'>
         <div className='relative w-full max-w-sm flex items-center '>
           <input

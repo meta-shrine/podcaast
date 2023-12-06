@@ -9,7 +9,9 @@ export const MainLayout = ({ children }: Children) => {
       <Sidebar />
       <div className='flex flex-col h-full w-[calc(100%-15rem)]'>
         <Navbar />
-        <div className='h-full py-6'>{children}</div>
+        <div className='h-[calc(100%-4rem)] w-full'>
+          {children}
+        </div>
       </div>
     </main>
   );
