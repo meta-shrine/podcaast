@@ -5,46 +5,7 @@ import { EpisodeCard } from '../common/episode-card';
 
 export const Explore = () => {
   const [pause, setPause] = useState<boolean>(false);
-  const exploreRefs = useRef<HTMLAudioElement[]>([]);
-  const explore: any[] = [];
 
-  useEffect(() => {
-    const observerOptions: IntersectionObserverInit = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.8,
-    };
-
-    const handleIntersection: IntersectionObserverCallback = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const audioElement = entry.target as HTMLAudioElement;
-          audioElement.play();
-        } else {
-          const audioElement = entry.target as HTMLAudioElement;
-          audioElement.pause();
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(handleIntersection, observerOptions);
-
-    exploreRefs.current.forEach((audioRef) => {
-      if (audioRef) {
-        observer.observe(audioRef);
-      }
-    });
-
-    return () => {
-      observer.disconnect();
-    };
-  }, [explore]);
-
-  const handleExploreRef = (index: number) => (ref: HTMLAudioElement | null) => {
-    if (ref) {
-      exploreRefs.current[index] = ref;
-    }
-  };
   return (
     <div className='relative overflow-hidden h-full w-full max-w-md snap-start'>
       <div className='absolute hidden h-full w-full scale-105 -z-10 blur-2xl brightness-50 bg-[url(https://images.pexels.com/photos/6953780/pexels-photo-6953780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)] bg-cover'></div>
