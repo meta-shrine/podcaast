@@ -4,8 +4,16 @@ import React from 'react'
 
 const Page = () => {
   return (
-    <ExploreLayout><Explore/></ExploreLayout>
-  )
+    <ExploreLayout>
+      <Explore />
+      <Explore />
+      <Explore />
+      <Explore />
+      <Explore />
+      <Explore />
+      <Explore />
+    </ExploreLayout>
+  );
 }
 
 export default Page

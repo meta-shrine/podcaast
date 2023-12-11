@@ -17,13 +17,14 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-   background: linear-gradient(
+  /* color: rgb(var(--foreground-rgb)); */
+    /* background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+      */
 }
 
 *::-webkit-scrollbar {
@@ -33,4 +34,17 @@ body {
 * {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+@keyframes dissolve {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate-dissolve {
+  animation: dissolve 2s ease;
 }

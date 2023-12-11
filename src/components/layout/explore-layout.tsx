@@ -4,10 +4,10 @@ import { Recommend } from '../common/recommend';
 
 export const ExploreLayout = ({ children }: Children) => {
   return (
-    <div className='h-full w-full max-w-5xl mx-auto grid grid-cols-12 gap-6'>
-      <div className='col-span-6 h-full p-4'>{children}</div>
-      <div className='col-span-6 p-4 h-full overflow-y-scroll'>
-        <Recommend />
+    <div className='h-full w-full mx-auto  gap-16 p-0.5'>
+      <div className=' h-full w-full overflow-y-scroll snap-y snap-mandatory scroll-smooth'>{children}</div>
+      <div className='hidden lg:block h-full overflow-y-scroll'>
+        {/* <Recommend /> */}
       </div>
     </div>
   );

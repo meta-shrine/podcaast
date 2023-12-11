@@ -10,7 +10,6 @@ import { FaPlay } from 'react-icons/fa';
 export const Main = () => {
   const scrollref = useHorizontalScroll();
   const { scrollLeft, scrollRight, hasStarted, hasEnded } = useScroll({ elRef: scrollref });
-  console.log(hasStarted, hasEnded)
   return (
     <div className='h-full w-full'>
       <div className='flex flex-col gap-4'>
