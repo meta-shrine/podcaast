@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+const plugin = require('tailwindcss/plugin');
 
 const config: Config = {
   content: [
@@ -36,6 +37,15 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({addBase}:{addBase:any}) {
+			addBase({
+				'[type="search"]::-webkit-search-decoration': {display: 'none'},
+				'[type="search"]::-webkit-search-cancel-button': {display: 'none'},
+				'[type="search"]::-webkit-search-results-button': {display: 'none'},
+				'[type="search"]::-webkit-search-results-decoration': {display: 'none'},
+			})
+		}),
+  ],
 }
 export default config

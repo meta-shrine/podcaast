@@ -1,6 +1,6 @@
+'use client';
 import { Children } from '@/interface/types';
 import React, { useEffect, useRef } from 'react';
-import { Recommend } from '../common/recommend';
 
 export const ExploreLayout = ({ children }: Children) => {
   const exploreRefs = useRef<HTMLAudioElement[]>([]);
@@ -25,7 +25,10 @@ export const ExploreLayout = ({ children }: Children) => {
       });
     };
 
-    const observer = new IntersectionObserver(handleIntersection, observerOptions);
+    const observer = new IntersectionObserver(
+      handleIntersection,
+      observerOptions
+    );
 
     exploreRefs.current.forEach((audioRef) => {
       if (audioRef) {
@@ -38,17 +41,18 @@ export const ExploreLayout = ({ children }: Children) => {
     };
   }, [explore]);
 
-  const handleExploreRef = (index: number) => (ref: HTMLAudioElement | null) => {
-    if (ref) {
-      exploreRefs.current[index] = ref;
-    }
-  };
+  const handleExploreRef =
+    (index: number) => (ref: HTMLAudioElement | null) => {
+      if (ref) {
+        exploreRefs.current[index] = ref;
+      }
+    };
   return (
     <div className='h-full w-full mx-auto  gap-16 p-0.5'>
-      <div className=' h-full w-full overflow-y-scroll snap-y snap-mandatory scroll-smooth'>{children}</div>
-      <div className='hidden lg:block h-full overflow-y-scroll'>
-        {/* <Recommend /> */}
+      <div className=' h-full w-full overflow-y-scroll snap-y snap-mandatory scroll-smooth'>
+        {children}
       </div>
+      <div className='hidden lg:block h-full overflow-y-scroll'></div>
     </div>
   );
 };
